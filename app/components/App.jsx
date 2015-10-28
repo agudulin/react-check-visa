@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 import BarcodeInput from './BarcodeInput.jsx';
 
 import './app.css';
@@ -27,7 +28,7 @@ class App extends Component {
     const { dispatch, barcode } = this.props;
 
     return (
-      <div className='App'>
+      <div className={classNames('App', { 'App--success': barcode.ready })}>
         <div className='App__center'>
           <BarcodeInput dispatch={dispatch} loading={barcode.loading} />
           <LoadingLabel loading={barcode.loading} />
