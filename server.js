@@ -1,12 +1,13 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 import checkVisa from 'check-visa';
+import * as routes from './app/constants/Routes';
 
 const app = express();
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/api/check/:barcode', (req, res) => {
+app.get(`${routes.CHECK_BARCODE}/:barcode`, (req, res) => {
   console.log(req.params.barcode);
   checkVisa(req.params.barcode)
     .then((result) => res.json({ ready: result }))
