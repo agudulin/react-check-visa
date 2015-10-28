@@ -3,6 +3,7 @@ var autoprefixer = require('autoprefixer');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
+var nested = require('postcss-nested');
 
 var TARGET = process.env.npm_lifecycle_event;
 var ROOT_PATH = path.resolve(__dirname);
@@ -36,6 +37,7 @@ var common = {
   },
   postcss: function() {
     return [
+      nested(),
       autoprefixer({ browsers: ['ie >= 8', 'last 2 versions', '> 2%'] })
     ];
   },

@@ -1,0 +1,33 @@
+.BarcodeInput {
+  &__input {
+    font-size: 1rem;
+    border: 3px solid #ccc;
+    border-radius: 2px;
+    padding: 10px 16px;
+    outline: 0;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: #555;
+      outline: 0;
+    }
+  }
+
+  &__check-btn {
+    font-size: 1rem;
+    background: none;
+    border: 3px solid #ccc;
+    border-radius: 3px;
+    color: white;
+    outline: 0;
+    padding: 10px 16px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+
+    &:hover {
+      background: white;
+      border-color: white;
+      color: black;
+    }
+  }
+}

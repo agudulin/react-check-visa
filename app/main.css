@@ -1,3 +1,13 @@
+:root {
+  box-sizing: border-box;
+  height: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
-  background: tomato;
+  background-color: #607D8B;
+  margin: 0;
+  padding: 0;
 }
