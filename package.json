@@ -7,15 +7,21 @@
   ],
   "repository": "agudulin/react-check-visa",
   "dependencies": {
-    "autoprefixer": "^6.0.3",
     "babel-core": "^5.8.30",
+    "body-parser": "^1.14.1",
+    "check-visa": "^1.0.0",
+    "express": "^4.13.3",
+    "isomorphic-fetch": "^2.2.0",
     "postcss-loader": "^0.7.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
-    "redux": "^3.0.4"
+    "redux": "^3.0.4",
+    "redux-logger": "^2.0.4",
+    "redux-thunk": "^1.0.0"
   },
   "devDependencies": {
+    "autoprefixer": "^6.0.3",
     "babel": "^5.5.6",
     "babel-loader": "^5.3.2",
     "babel-plugin-react-transform": "^1.1.1",
@@ -27,12 +33,14 @@
     "redux-devtools": "^2.1.5",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.2",
+    "webpack-dev-middleware": "^1.2.0",
     "webpack-dev-server": "^1.12.1",
+    "webpack-hot-middleware": "^2.4.1",
     "webpack-merge": "^0.2.0"
   },
-  "main": "index.es5.js",
+  "main": "",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server",
+    "start": "babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexander Gudulin <alexandr.gudulin@gmail.com> (http://gudulin.com)",

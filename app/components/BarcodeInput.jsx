@@ -1,24 +1,25 @@
 import React, { Component, PropTypes } from 'react';
+import { checkBarcode } from '../actions/barcode';
 
 import './barcode-input.css';
 
 class BarcodeInput extends Component {
   static propTypes = {
-    actions: PropTypes.object.isRequired
+    dispatch: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired
   }
 
   constructor(props) {
     super(props);
-    this.state = {
-      barcode: ''
-    };
+    this.state = { barcode: '' };
   }
 
   render() {
+    const { loading } = this.props;
     return (
       <div className='BarcodeInput'>
-        <input onChange={this.onInputChange.bind(this)} className='BarcodeInput__input' type='text' />
-        <button onClick={this.onClickCheckBtn.bind(this)} className='BarcodeInput__check-btn' type='button'>Check</button>
+        <input onChange={this.onInputChange.bind(this)} className='BarcodeInput__input' type='text' disabled={loading} />
+        <button onClick={this.onClickCheckBtn.bind(this)} className='BarcodeInput__check-btn' type='button' disabled={loading}>Check</button>
       </div>
     );
   }
@@ -28,9 +29,7 @@ class BarcodeInput extends Component {
   }
 
   onClickCheckBtn(event) {
-    this.props.actions.checkBarcode({
-      barcode: this.state.barcode
-    });
+    this.props.dispatch(checkBarcode({ barcode: this.state.barcode }));
   }
 }
 

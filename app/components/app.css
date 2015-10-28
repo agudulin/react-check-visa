@@ -1,9 +1,18 @@
 .App {
   height: 100%;
+  &__center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
-.BarcodeInput {
+
+.LoadingLabel,
+.ReadyLabel {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  color: white;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
 }

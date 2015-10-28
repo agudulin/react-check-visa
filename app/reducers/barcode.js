@@ -1,18 +1,25 @@
-import { CHECK_BARCODE } from '../constants/ActionTypes';
-
-const checkVisa = (barcode) => Math.floor(Math.random() * 10) > 5
+import {
+  REQUEST_CHECK_BARCODE,
+  RECIEVE_CHECK_BARCODE } from '../constants/ActionTypes';
 
 const initialState = {
   barcode: '',
-  ready: false
+  ready: false,
+  loading: false
 };
 
 function barcode(state = initialState, action) {
   switch(action.type) {
-    case CHECK_BARCODE:
+    case REQUEST_CHECK_BARCODE:
       return {
         barcode: action.barcode,
-        ready: checkVisa(action.barcode)
+        loading: true
+      };
+    case RECIEVE_CHECK_BARCODE:
+      return {
+        barcode: action.barcode,
+        ready: action.ready,
+        loading: false
       };
     default:
       return state;
