@@ -37,7 +37,9 @@
   },
   "main": "",
   "scripts": {
-    "start": "babel-node server.js",
+    "start": "NODE_ENV=development node server",
+    "prod": "NODE_ENV=production node server",
+    "build": "webpack --stats --config ./webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexander Gudulin <alexandr.gudulin@gmail.com> (http://gudulin.com)",

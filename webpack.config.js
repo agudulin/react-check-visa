@@ -5,7 +5,7 @@ var nested = require('postcss-nested');
 
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
-var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
+var BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
 
 module.exports = {
   entry: [
@@ -18,7 +18,7 @@ module.exports = {
   },
   output: {
     path: BUILD_PATH,
-    publicPath: '/build/',
+    publicPath: '/dist/',
     filename: 'bundle.js'
   },
   module: {
