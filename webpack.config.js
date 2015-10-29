@@ -8,13 +8,17 @@ var APP_PATH = path.resolve(ROOT_PATH, 'app');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports = {
-  entry: APP_PATH,
+  entry: [
+    'webpack-hot-middleware/client',
+    APP_PATH
+  ],
   devtool: 'eval-source-map',
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   output: {
     path: BUILD_PATH,
+    publicPath: '/build/',
     filename: 'bundle.js'
   },
   module: {
