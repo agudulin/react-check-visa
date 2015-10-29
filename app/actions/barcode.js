@@ -10,7 +10,7 @@ function recieveCheckBarcode(barcode, json) {
   return { type: types.RECIEVE_CHECK_BARCODE, ready: json.ready, barcode };
 }
 
-export function checkBarcode({ barcode }) {
+export function checkBarcode(barcode) {
   return dispatch => {
     dispatch(requestCheckBarcode(barcode));
     return fetch(`${routes.CHECK_BARCODE}/${barcode}`)

@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import BarcodeInput from './BarcodeInput.jsx';
+import * as BarcodeActions from '../actions/barcode';
 
 import './app.css';
 
@@ -20,17 +21,17 @@ const ReadyLabel = ({ ready }) => (
 
 class App extends Component {
   static propTypes = {
-    barcode: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired
+    actions: PropTypes.object.isRequired,
+    barcode: PropTypes.object.isRequired
   }
 
   render() {
-    const { dispatch, barcode } = this.props;
+    const { actions, barcode } = this.props;
 
     return (
       <div className={classNames('App', { 'App--success': barcode.ready })}>
         <div className='App__center'>
-          <BarcodeInput dispatch={dispatch} loading={barcode.loading} />
+          <BarcodeInput actions={actions} loading={barcode.loading} barcode={barcode.barcode} />
           <LoadingLabel loading={barcode.loading} />
           <ReadyLabel ready={barcode.ready} />
         </div>
@@ -43,4 +44,8 @@ function mapStateToProps(state) {
   return { barcode: state.barcode };
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(BarcodeActions, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
