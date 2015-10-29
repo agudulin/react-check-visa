@@ -2,6 +2,10 @@
 
   > Simple react application for testing [check-visa](https://www.npmjs.com/package/check-visa) npm package
 
+<p align="center">
+  ![demo](demo.gif)
+</p>
+
 ## Development
 
 ```js
