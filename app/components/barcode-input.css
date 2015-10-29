@@ -11,6 +11,9 @@
       border-color: #555;
       outline: 0;
     }
+    &[disabled] {
+      cursor: not-allowed;
+    }
   }
 
   &__check-btn {
@@ -25,9 +28,16 @@
     margin-left: 0.5rem;
 
     &:hover {
-      background: white;
+      background-color: white;
       border-color: white;
       color: black;
+    }
+    &[disabled],
+    &[disabled]:hover {
+      background-color: #eee;
+      border-color: #ccc;
+      color: #ccc;
+      cursor: not-allowed;
     }
   }
 }
