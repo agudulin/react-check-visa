@@ -6,7 +6,7 @@ import storage from './storage';
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware,
-  createLogger(),
+  createLogger()
 )(createStore);
 
 export default function configureStore() {

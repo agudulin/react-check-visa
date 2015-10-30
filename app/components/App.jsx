@@ -20,11 +20,6 @@ const ReadyLabel = ({ ready }) => (
 );
 
 class App extends Component {
-  static propTypes = {
-    actions: PropTypes.object.isRequired,
-    barcode: PropTypes.object.isRequired
-  }
-
   render() {
     const { actions, barcode } = this.props;
 
@@ -39,6 +34,10 @@ class App extends Component {
     );
   }
 }
+App.propTypes = {
+  actions: PropTypes.object.isRequired,
+  barcode: PropTypes.object.isRequired
+};
 
 function mapStateToProps(state) {
   return { barcode: state.barcode };

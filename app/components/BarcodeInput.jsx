@@ -3,12 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import './barcode-input.css';
 
 class BarcodeInput extends Component {
-  static propTypes = {
-    actions: PropTypes.object.isRequired,
-    loading: PropTypes.bool.isRequired,
-    barcode: PropTypes.string
-  }
-
   constructor(props) {
     super(props);
     this.state = { barcode: this.props.barcode };
@@ -32,5 +26,10 @@ class BarcodeInput extends Component {
     this.props.actions.checkBarcode(this.state.barcode);
   }
 }
+BarcodeInput.propTypes = {
+  actions: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  barcode: PropTypes.string
+};
 
 export default BarcodeInput;

@@ -24,5 +24,8 @@ export default function(callback) {
     app.get('/', (req, res) => res.sendFile(__dirname + '/app.html'));
   }
 
-  return app.listen(app.get('port'), () => callback(app));
+  return app.listen(app.get('port'), () => {
+    console.log(`Express ${app.get('env')} server listening on ${app.get('host')}:${app.get('port')}`);
+    callback(app);
+  });
 }

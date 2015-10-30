@@ -4,6 +4,10 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from '../webpack.config';
 
 export default function(app) {
+  if (app.get('env') === 'production') {
+    return;
+  }
+
   const host = app.get('host');
   const port = app.get('port') + 1;
   const compiler = webpack(config);
