@@ -5,7 +5,7 @@ const storage = {
     try {
       return JSON.parse(localStorage.getItem(key));
     } catch (e) {
-      console.warning("Can't get item from localStorage: ", key);
+      console.warning(`Can't get item from localStorage: ${key}`);
       return null;
     }
   },
