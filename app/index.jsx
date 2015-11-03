@@ -11,7 +11,7 @@ main();
 
 function main() {
   const store = configureStore();
-  const app = document.getElementById('root');
+  const app = document.createElement('main');
   document.body.appendChild(app);
 
   ReactDOM.render(<Provider store={store}><App /></Provider>, app);

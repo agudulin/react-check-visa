@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var webpackClean = require('clean-webpack-plugin');
 var webpackMerge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var nested = require('postcss-nested');
 
 var TARGET = process.env.npm_lifecycle_event;
@@ -78,6 +79,7 @@ else if (TARGET === 'build') {
     },
     output: {
       path: BUILD_PATH,
+      publicPath: '/dist/',
       filename: '[name].[chunkhash].js'
     },
     devtool: 'source-map',
@@ -102,7 +104,8 @@ else if (TARGET === 'build') {
       }),
       new webpack.optimize.UglifyJsPlugin({
         compress: { warnings: false }
-      })
+      }),
+      new HtmlWebpackPlugin({ title: 'German National Visa status check' })
     ]
   });
 }

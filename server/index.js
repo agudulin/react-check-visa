@@ -1,3 +1,4 @@
+import path from 'path';
 import bodyParser from 'body-parser';
 import express from 'express';
 import checkVisa from 'check-visa';
@@ -21,7 +22,7 @@ export default function(callback) {
 
   if (app.get('env') === 'production') {
     app.use('/dist', express.static('dist'));
-    app.get('/', (req, res) => res.sendFile(__dirname + '/app.html'));
+    app.get('/', (req, res) => res.sendFile('index.html', { root: path.join(__dirname, '../dist/') }));
   }
 
   return app.listen(app.get('port'), () => {

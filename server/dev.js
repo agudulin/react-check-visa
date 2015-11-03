@@ -19,7 +19,7 @@ export default function(app) {
     stats: { colors: true }
   }));
   app.use(webpackHotMiddleware(compiler));
-  app.use((req, res) => res.sendFile(__dirname + '/app.html'));
+  app.use((req, res) => res.sendFile('app.html', { root: __dirname }));
 
   app.listen(port, (error) => {
     if (error) {
