@@ -26,10 +26,16 @@
     padding: 10px 16px;
     cursor: pointer;
     margin-left: 0.5rem;
+    transition: border-color 0.2s;
 
     &:hover {
       background-color: white;
       border-color: white;
+      color: black;
+    }
+    &:focus {
+      background-color: white;
+      border-color: #555;
       color: black;
     }
     &[disabled],

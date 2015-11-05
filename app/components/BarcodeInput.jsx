@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { findDOMNode } from 'react-dom';
 
 import './barcode-input.css';
 
@@ -8,12 +9,30 @@ class BarcodeInput extends Component {
     this.state = { barcode: this.props.barcode };
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { loading } = nextProps;
+    let input = findDOMNode(this.refs.input);
+    input.disabled = loading;
+    input.focus();
+  }
+
   render() {
     const { loading } = this.props;
     return (
       <div className='BarcodeInput'>
-        <input onChange={this.onInputChange.bind(this)} className='BarcodeInput__input' type='text' disabled={loading} defaultValue={this.state.barcode} />
-        <button onClick={this.onClickCheckBtn.bind(this)} className='BarcodeInput__check-btn' type='button' disabled={loading}>Check</button>
+        <input
+          className='BarcodeInput__input'
+          onChange={this.onInputChange.bind(this)}
+          onKeyPress={this.onInputKeypress.bind(this)}
+          defaultValue={this.state.barcode}
+          type='text'
+          ref='input'
+          autoFocus={true} />
+        <button
+          className='BarcodeInput__check-btn'
+          onClick={this.onClickCheckBtn.bind(this)}
+          disabled={loading}
+          type='button'>Check</button>
       </div>
     );
   }
@@ -22,7 +41,17 @@ class BarcodeInput extends Component {
     this.setState({ barcode: event.currentTarget.value });
   }
 
+  onInputKeypress(event) {
+    if (event.key === 'Enter') {
+      this.checkBarcode();
+    }
+  }
+
   onClickCheckBtn(event) {
+    this.checkBarcode();
+  }
+
+  checkBarcode() {
     this.props.actions.checkBarcode(this.state.barcode);
   }
 }
