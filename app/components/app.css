@@ -24,3 +24,13 @@
   text-transform: uppercase;
   font-size: 0.7rem;
 }
+.ReadyLabel__pdf {
+  margin-left: 0.3rem;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  transition: border .2s;
+  &:hover {
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+  }
+}

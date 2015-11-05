@@ -19,6 +19,7 @@ function barcode(state = initialState, action) {
       return {
         barcode: action.barcode,
         ready: action.ready,
+        pdfLink: action.pdfLink,
         loading: false
       };
     default:

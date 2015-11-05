@@ -7,7 +7,12 @@ function requestCheckBarcode(barcode) {
 }
 
 function recieveCheckBarcode(barcode, json) {
-  return { type: types.RECIEVE_CHECK_BARCODE, ready: json.ready, barcode };
+  return {
+    type: types.RECIEVE_CHECK_BARCODE,
+    pdfLink: json.pdfLink,
+    ready: json.result,
+    barcode
+  };
 }
 
 export function checkBarcode(barcode) {

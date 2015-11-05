@@ -7,15 +7,16 @@ import * as BarcodeActions from '../actions/barcode';
 
 import './app.css';
 
-const LoadingLabel = ({ loading }) => (
+const LoadingLabel = () => (
   <div className='LoadingLabel'>
-    { loading ? 'Loading...' : '' }
+    Loading...
   </div>
 );
 
-const ReadyLabel = ({ ready }) => (
+const ReadyLabel = ({ ready, pdfLink }) => (
   <div className='ReadyLabel'>
-    { ready ? 'Ready!' : '' }
+    { ready ? 'Ready!' : 'Nope.' }
+    { pdfLink ? <a href={pdfLink} className='ReadyLabel__pdf' target='_blank'>pdf</a> : '' }
   </div>
 );
 
@@ -27,8 +28,10 @@ class App extends Component {
       <div className={classNames('App', { 'App--success': barcode.ready })}>
         <div className='App__center'>
           <BarcodeInput actions={actions} loading={barcode.loading} barcode={barcode.barcode} />
-          <LoadingLabel loading={barcode.loading} />
-          <ReadyLabel ready={barcode.ready} />
+          { barcode.loading
+            ? <LoadingLabel />
+            : <ReadyLabel ready={barcode.ready} pdfLink={barcode.pdfLink} />
+          }
         </div>
       </div>
     );
