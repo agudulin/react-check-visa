@@ -16,7 +16,7 @@ export default function(callback) {
   app.get(`${routes.CHECK_BARCODE}/:barcode`, (req, res) => {
     console.log(req.params.barcode);
     checkVisa(req.params.barcode)
-      .then((result) => res.json({ ready: result }))
+      .then(({ pdfLink, result }) => res.json({ pdfLink, result }))
       .catch((error) => res.json({ ready: false, error: 'Can\'t'}));
   });
 
