@@ -1,12 +1,11 @@
 FROM node:latest
+MAINTAINER alexandr.gudulin@gmail.com
 
-RUN mkdir /src
+COPY ./package.json src/
+RUN cd src && npm install
 
-WORKDIR /src
-ADD . /src
-RUN npm install
+COPY . /src
+WORKDIR src/
 RUN npm run build
-
-EXPOSE 3000
 
 CMD npm run prod
